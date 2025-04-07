@@ -16,7 +16,7 @@ The platform enables administrators to manage department-specific courses, assig
 - **Remove Participants**: Administrators have the ability to remove specific students from courses.
 - **Assign grades** - Assign grades to students for specific course
 
-### User Functionality
+### student Functionality
 - **Browse Available Courses**: Students can view a list of all courses available for registration.
 - **Register for Courses**: Students can register for one or more courses, subject to availability and participant limits.
 - **View enrolled Courses** : Students can able to view the courses which they have enrolled.
