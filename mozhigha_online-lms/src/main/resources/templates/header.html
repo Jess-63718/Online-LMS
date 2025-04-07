@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="UTF-8">
+  <title>khara</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link th:href="@{/stylesheet}" rel="stylesheet">
+  <style>
+    .sidebar {
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          padding: 58px 0 0; /* Height of navbar */
+          width: 240px;
+          z-index: 600;
+    }
+
+    .collapse{
+      background-color: rgb(180, 113, 208);
+    }
+    .sidebar a{
+      background-color: rgb(119, 202, 202);
+    }
+  </style>
+</head>
+<body>
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse">
+    <div class="ms-2">
+      <img th:src="@{/img/profilePic.jpg}" src="../static/img/profilePic.jpg" alt="hugenerd" width="50" height="50" class="rounded-circle"  />
+      <div sec:authorize="hasRole('ADMIN')">
+        <span class="fs-5 d-none d-sm-inline">Admin</span>
+      </div>
+      <div sec:authorize="hasRole('STUDENT')">
+        <span class="fs-5 d-none d-sm-inline" th:text="${email}">student</span>
+      </div>
+    </div>
+
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4" >
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{'/admin'}" class="list-group-item list-group-item-action active-table-tab" >
+          <i class="bi bi-speedometer me-3"></i>
+          <span>Dashboard</span>
+        </a>
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{'/admin/all-students'}" class="list-group-item list-group-item-action">
+          <i class="bi bi-people me-3"></i>
+          <span>students</span>
+        </a>
+        <a th:href="@{'/all-courses'}" class="list-group-item list-group-item-action">
+          <i class="bi bi-stack-overflow me-3"></i>
+          <span sec:authorize="hasRole('ADMIN')" >All classes</span>
+          <span sec:authorize="hasRole('STUDENT')">Apply To new class</span>
+        </a>
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{'/admin/addNewcourses'}" class="list-group-item list-group-item-action" >
+          <i class="fs-5 bi bi-node-plus"></i>
+          <span>Add new Course</span>
+        </a>
+        <a sec:authorize="hasRole('STUDENT')" th:href="@{/student/courses}" class="list-group-item list-group-item-action">
+          <i class="bi bi-file-earmark-break"></i>
+          <span>My courses</span>
+        </a>
+        <a th:href="${'/logout'}" style="position: fixed;bottom: 0; margin-bottom: 20px">
+          <i class="bi bi-box-arrow-right" ></i>
+          <span>logout</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link th:href="@{/stylesheet}" rel="stylesheet">
+</body>
+</html>

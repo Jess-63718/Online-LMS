@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+<section class="vh-100 d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 justify-content-center mb-5">
+                <div>
+                    <img src="../static/img/draw2.png" th:src="@{/img/draw2.png}" class="img-fluid" alt="Sample image">
+                </div>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-4">
+                <div>
+                    <h5 style="color: rgb(228, 154, 223)">Welcome to Mozhigha:)</h5>
+                </div>
+                <div class="ml-5 mt-5">
+                    <form th:action="@{/login}" method="post">
+                        <div class="form-group ">
+                            <label class="control-label">Your ID Number</label>
+                            <div>
+                                <input type="text" name="username" placeholder="Enter a valid ID from 9 numbers"
+                                       class="form-control" required/>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label class="control-label">Your Password</label>
+                            <div>
+                                <input type="password" name="password" placeholder="Enter a valid ID from 9 numbers"
+                                       class="form-control" required/>
+                            </div>
+                        </div>
+                        <div class="text-center text-lg-start pt-2">
+                            <button type="submit" class="btn btn-primary btn-md">Login</button>
+                        </div>
+                        <div th:if="${error}" class="text-danger">
+                            <p th:text="${error}"></p>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-RH20d5X6rfgiVw8rpuiPN62eD5TtU7aYB1ONEnjpnZG+3S1xigZ+PkeOxDd/1zU7"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

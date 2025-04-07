@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <th:block th:insert="header.html"></th:block>
+            </div>
+            <div class="col-10">
+                <div class="banner">
+                    <div class="container p-5">
+                        <h5 class="pb-4">Course Information</h5>
+                        <div class="row"  >
+                            <div class="col-2"></div>
+                            <div class="card mx-3 mt-n5 shadow-lg col-8" style="border-radius: 20px; background-color:white; border: 2px solid #77CACA;">
+                                <div class="card-body p-5" >
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <h4 class="card-title mb-3 text-dark" style="font-weight:700" th:text="${course.name}"></h4>
+                                        </div>
+                                        <div class="col-4">
+                                            <h6>Code Course: [[ ' ' + ${course.code} ]]</h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <small style="color: gray" class="muted" th:text="${course.professor}"></small>
+                                        <p class="mt-4" th:text="${course.description}"></p>
+                                    </div>
+                                    <div class="row" sec:authorize="hasRole('STUDENT')">
+                                        <th:block th:if="${course.students.size < 10}">
+                                           <!-- Flash Messages -->
+<div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+    <p th:text="${success}"></p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <p th:text="${error}"></p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<!-- Add to Courses Button -->
+<div>
+    <i class="bi bi-folder-plus"></i>
+    <a th:href="@{/student/courses/{id}/add(id=${course.id})}" class="btn btn-primary">Add to Courses</a>
+</div>
+
+                                        </th:block>
+                                        <th:block th:if="${course.students.size > 10}">
+                                            <div>
+                                                <i class="bi bi-exclamation-triangle"></i>
+                                                <a>Course is Full</a>
+                                            </div>
+                                        </th:block>
+                                    </div>
+                                        <div sec:authorize="hasRole('ADMIN')">
+                                           <div class="row-col-12">
+                                               <a class="ms-5" th:href="${'/admin/course/'+ course.id +'/students'}">
+                                                   <i class="bi bi-three-dots"></i>
+                                                   <span>All Student List</span>
+                                               </a>
+                                           </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</body>
+</html>
+
+

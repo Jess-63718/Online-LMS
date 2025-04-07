@@ -1,0 +1,17 @@
+.sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	padding: 58px 0 0; /* Height of navbar */
+	width: 240px;
+	z-index: 600;
+	
+}
+
+.collapse{
+	background-color: rgb(180, 113, 208);
+}
+.sidebar a{
+	background-color: rgb(180, 113, 208);
+}
