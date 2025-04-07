@@ -35,4 +35,4 @@ The platform enables administrators to manage department-specific courses, assig
 - Java 11 or higher
 - Maven 
 - MySQL database 
-- IDE such as IntelliJ IDEA or Eclipse
+- IDE : Eclipse
